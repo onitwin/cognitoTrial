@@ -1,24 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
+import React,{useState} from 'react';
 import './App.css';
+import {CognitoUserPool} from 'amazon-cognito-identity-js'
 
-function App() {
+const App=()=> {
+  const [email,setEmail]=useState('');
+  const [password,setPassword]=useState('');
+
+
+
+  const poolData ={
+    //hidden stuff
+  }
+
+  const onSubmit= event =>{
+    event.preventDefault()
+    UserPool.signUp(email,password,[],null,(err,data)=>{
+      if (err)console.error(err);
+      console.log(data)
+    });
+  }
+
+  const UserPool= new CognitoUserPool(poolData)
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div >
+    <form onSubmit={onSubmit}>
+    <input value={email} onChange={event=> setEmail(event.target.value)}/>
+    <input value={password} onChange={event=> setPassword(event.target.value)}/>
+    <button type="submit">Sign Up</button>
+    </form>
+    <p>Its loaded</p>
     </div>
   );
 }

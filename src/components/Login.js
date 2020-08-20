@@ -41,7 +41,6 @@ return (
   <input value={password} onChange={event=> setPassword(event.target.value)}/>
   <button type="submit">Log In</button>
   </form>
-  <p>This is the LOGIN component</p>
   </div>
 );
 }

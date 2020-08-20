@@ -27,7 +27,6 @@ const Signup=()=> {
     <input value={password} onChange={event=> setPassword(event.target.value)}/>
     <button type="submit">Sign Up</button>
     </form>
-    <p>This is the SIGN UP component</p>
     </div>
   );
 }

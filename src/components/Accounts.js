@@ -5,9 +5,26 @@ import Pool from '../UserPool'
 const AccountContext = createContext();
 
 const Account =props=>{
-  const authenticate = async (Username,Password)=>
+  const getSession=async ()=>
     await new Promise((resolve,reject)=>{
-      const user= new CognitoUser({Username,Pool});
+      const user=Pool.getCurrentUser();
+      if (user){
+        user.getSession((err,session)=>{
+          if(err){
+            reject();
+          }else{
+            resolve(session);
+          }
+        })
+      }else{
+        reject();
+      }
+    })
+
+
+  const authenticate = async (Username,Password)=> //authenticate is the result of passing in stored user details and submitting to Amazon for appraisal
+    await new Promise((resolve,reject)=>{
+      const user= new CognitoUser({Username,Pool}); //new user details are created from existing details??
       const authDetails= new AuthenticationDetails({Username,Password})
 
       user.authenticateUser(authDetails,{
@@ -28,9 +45,20 @@ const Account =props=>{
       })
     })
 
+    const logout=()=>{
+      const user =Pool.getCurrentUser();
+      if (user){
+        user.signOut();
+      }
+    }
+
         return(
-          <AccountContext.Provider value={{authenticate}}>
-          {props.children}
+          <AccountContext.Provider value={{
+            authenticate,
+            getSession,
+            logout
+          }}>
+            {props.children}
           </AccountContext.Provider>
         );
       };

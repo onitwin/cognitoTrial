@@ -3,11 +3,13 @@ import UserPool from '../UserPool'
 
 
 const Signup=()=> {
-  const [email,setEmail]=useState('');
-  const [password,setPassword]=useState('');
+  const [email,setEmail]=useState(''); //recieves email from form
+  const [password,setPassword]=useState(''); //recieves password from form
 
 
-
+  //submit event uses the 'signup' meythod from 'UserPool' to construct
+  //a request to Amazon Cognito services with email and password
+  //as payload
 
   const onSubmit= event =>{
     event.preventDefault()

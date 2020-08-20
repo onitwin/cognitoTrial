@@ -8,9 +8,15 @@ const Login=()=> {
   const [email,setEmail]=useState('');
   const [password,setPassword]=useState('');
 
+  //receivers for username and password from the form- this is passed in
+  //to the authenticate call.
+
   const {authenticate}=useContext(AccountContext)
 
 
+  //submit event uses the 'authenticate' context from 'AccountContext'(Accounts) to construct
+  //a request to Amazon Cognito services with email and password passed in
+  //before logging the responce
 
 
   const onSubmit= event =>{

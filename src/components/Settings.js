@@ -1,6 +1,7 @@
 import React,{useState,useEffect,useContext} from 'react'
 import {AccountContext} from './Accounts'
 import ChangePassword from './ChangePassword'
+import ChangeEmail from './ChangeEmail'
 
 
 export default ()=>{
@@ -21,6 +22,7 @@ export default ()=>{
       <>
       <h1>Settings</h1>
       <ChangePassword/>
+      <ChangeEmail/>
       </>
     )}
     </div>

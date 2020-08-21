@@ -1,12 +1,23 @@
-import React ,{useState} from 'react'
+import React ,{useState,useContext} from 'react'
+import {AccountContext} from './Accounts'
 
 
 export default ()=>{
+  const {getSession,authenticate}= useContext(AccountContext) //destructore session from Accounts
+
   const [password,setPassword]=useState('');
   const [newPassword,setNewPassword]=useState('');
   const onSubmit=event=>{
     event.preventDefault();
-    console.log(password,newPassword)
+    getSession().then(({user,email})=>{
+      authenticate(email,password)
+      .then(()=>{
+        user.changePassword(password,newPassword,(err,result)=>{
+          if(err) console.error(err);
+          console.log(result)
+        })
+      })
+    })
 
   }
   return(

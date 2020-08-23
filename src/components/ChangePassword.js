@@ -7,6 +7,7 @@ export default ()=>{
 
   const [password,setPassword]=useState('');
   const [newPassword,setNewPassword]=useState('');
+
   const onSubmit=event=>{
     event.preventDefault();
     getSession().then(({user,email})=>{
@@ -18,8 +19,8 @@ export default ()=>{
         })
       })
     })
-
   }
+  
   return(
     <div>
     <form onSubmit={onSubmit}>

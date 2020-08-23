@@ -9,7 +9,7 @@ const Signup=()=> {
 
   //submit event uses the 'signup' meythod from 'UserPool' to construct
   //a request to Amazon Cognito services with email and password
-  //as payload
+  //as payload to create a new user
 
   const onSubmit= event =>{
     event.preventDefault()

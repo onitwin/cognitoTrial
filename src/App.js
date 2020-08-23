@@ -5,6 +5,7 @@ import {Account} from './components/Accounts'
 import Status from './components/Status';
 import Settings from './components/Settings'
 import ForgotPassword from './components/ForgotPassword'
+import Attributes from './components/Attributes'
 
 //this file renders all the other files and nothing more
 
@@ -17,6 +18,7 @@ const App=()=> {
       <Login/>
       <ForgotPassword/>
       <Settings/>
+      <Attributes/>
 
     </Account>
   );

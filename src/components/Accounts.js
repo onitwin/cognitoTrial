@@ -2,10 +2,11 @@
 import React,{createContext} from 'react';
 import {CognitoUser,AuthenticationDetails} from 'amazon-cognito-identity-js'
 import Pool from '../UserPool'
+
 const AccountContext = createContext();
 
 const Account =props=>{
-  const getSession=async ()=>
+  const getSession=async ()=> //gives access to current Cognito user
   await new Promise((resolve,reject)=>{
     const user=Pool.getCurrentUser();
     if (user){
@@ -14,7 +15,7 @@ const Account =props=>{
           reject();
         }else{
           const attributes= await new Promise((resolve,reject)=>{
-            user.getUserAttributes((err,attributes)=>{ //obtains extra user information when submitting session request (e.g, email address)
+            user.getUserAttributes((err,attributes)=>{ //obtains user information when submitting session request (e.g, email address)
               if(err){
                 reject(err)
               }else{

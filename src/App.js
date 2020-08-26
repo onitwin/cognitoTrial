@@ -6,6 +6,8 @@ import Status from './components/Status';
 import Settings from './components/Settings'
 import ForgotPassword from './components/ForgotPassword'
 import Attributes from './components/Attributes'
+// import RandomNumber from './components/RandomNumber' tutorial required lambda- not set up currently
+//once set up add <RandomNumber/> below <Attributes/>
 
 //this file renders all the other files and nothing more
 

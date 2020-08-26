@@ -29,8 +29,15 @@ const Account =props=>{
               }
             })
           })
+
+          const token=session.getIdToken().getJwtToken()
+
+
           resolve({
             user,
+            headers:{
+              Authorisation:token
+            },
             ...session,
             ...attributes
           });

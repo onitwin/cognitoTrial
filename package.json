@@ -9,7 +9,8 @@
     "amazon-cognito-identity-js": "^4.3.3",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-scripts": "3.4.3"
+    "react-scripts": "3.4.3",
+    "request-promise": "^4.2.6"
   },
   "scripts": {
     "start": "react-scripts start",
